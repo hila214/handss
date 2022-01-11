@@ -1,1 +1,2 @@
-print("game"
+print("my hmjk")
+
