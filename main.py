@@ -12,7 +12,7 @@ BK_COLOR = (255,204,204)
 
 pygame.init()
 screen = pygame.display.set_mode(WINDOW_SIZE)
-pygame.display.set_caption("Hila First Game")
+pygame.display.set_caption("Hila First Game ")
 bk_image = pygame.image.load("img1.jpg")
 ship_image= pygame.image.load("ship3.png.png")
 ship_image= pygame.transform.scale(ship_image, (50,80))
