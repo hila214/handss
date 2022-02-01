@@ -3,7 +3,7 @@ import pygame
 
 # screen size 
 WINDOW_W = 1000
-WINDOW_H = 800
+WINDOW_H = 700
 WINDOW_SIZE = (WINDOW_W, WINDOW_H)
 
 pygame.init()
@@ -11,10 +11,10 @@ screen = pygame.display.set_mode(WINDOW_SIZE)
 pygame.display.set_caption("My First Game")
 
 # www.pngaaa.com
-bk_image = pygame.image.load("hila2.jpg")
-ship_image = pygame.image.load("ship3.png.png")
+bk_image = pygame.image.load("space.jpg")
+ship_image = pygame.image.load("ship.png")
 ship_image = pygame.transform.scale(ship_image, (50, 80)) 
-laser_image = pygame.image.load("laser.png")
+laser_image = pygame.image.load("laser2.png")
 laser_image = pygame.transform.scale(laser_image, (10, 20)) 
 
 clock = pygame.time.Clock()
@@ -28,6 +28,20 @@ circle_x_step = 10
 x_step = 10
 laser_list = []
 play = True
+
+SOUND_FILLE = "musich.mp3"
+GON_SHOT= "sound.mp3"
+pygame.mixer.init()
+pygame.mixer.music.load(SOUND_FILLE)
+pygame.mixer.music.load(GON_SHOT)
+pygame.mixer.Channel(0).play(pygame.mixer.Sound(SOUND_FILLE))
+
+
+ 
+ 
+
+
+
 
 
 # laser_list = [[121,780],[171,780]]
@@ -62,6 +76,8 @@ while play:
         ship_x += x_step
       if event.key == pygame.K_SPACE:
         laser_list.append([ship_x+21,ship_y])
+        pygame.mixer.Channel(1).play(pygame.mixer.Sound(GON_SHOT))
+
 
   screen.blit(ship_image,(ship_x,ship_y))
   pygame.draw.circle(screen,(255,255,255),(circle_x , circle_y),10)
