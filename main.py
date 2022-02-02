@@ -17,6 +17,9 @@ ship_image = pygame.transform.scale(ship_image, (50, 80))
 laser_image = pygame.image.load("laser.jpg")
 laser_image = pygame.transform.scale(laser_image, (10, 20)) 
 
+pygame.font.init()  
+myfont = pygame.font.SysFont('Comic Sans MS', 30)
+
 clock = pygame.time.Clock()
 
 circle_x = 10
@@ -81,7 +84,10 @@ while play:
 
   screen.blit(ship_image,(ship_x,ship_y))
   pygame.draw.circle(screen,(255,255,255),(circle_x , circle_y),10)
+
+  textsurface = myfont.render('score', False, (255, 255, 255))
   print_lasers()
+  screen.blit(textsurface,(0,0))
 
   circle_x +=circle_x_step
   if circle_x > WINDOW_W:
