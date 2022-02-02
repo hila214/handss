@@ -100,7 +100,7 @@ while play:
   screen.blit(ship_image,(ship_x,ship_y))
   pygame.draw.circle(screen,(255,255,255),(circle_x , circle_y),20)
 
-  textsurface = myfont.render('score:', False, (255, 255, 255))
+  textsurface = myfont.render('score points:', False, (255, 255, 255))
   print_lasers()
   screen.blit(textsurface,(0,0))
 
