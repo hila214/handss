@@ -14,7 +14,7 @@ pygame.display.set_caption("My First Game")
 bk_image = pygame.image.load("space.jpg")
 ship_image = pygame.image.load("ship.png")
 ship_image = pygame.transform.scale(ship_image, (50, 80)) 
-laser_image = pygame.image.load("laser2.png")
+laser_image = pygame.image.load("laser.jpg")
 laser_image = pygame.transform.scale(laser_image, (10, 20)) 
 
 clock = pygame.time.Clock()
