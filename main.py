@@ -5,6 +5,9 @@ import pygame
 WINDOW_W = 1000
 WINDOW_H = 700
 WINDOW_SIZE = (WINDOW_W, WINDOW_H)
+laser_list = []
+play = True
+
 
 pygame.init()
 screen = pygame.display.set_mode(WINDOW_SIZE)
@@ -19,6 +22,25 @@ laser_image = pygame.transform.scale(laser_image, (10, 20))
 
 pygame.font.init()  
 myfont = pygame.font.SysFont('Comic Sans MS', 30)
+
+def is_laser_hit(laser_pos):
+  return abs(laser_pos[0]-circle_x) <50 and abs(laser_pos[1]-circle_y) <50 
+
+
+def print_lasers():
+  for i in range(len(laser_list)):
+    laser = laser_list[i]
+    screen.blit(laser_image,(laser[0],laser[1]))
+    laser_list[i] = [laser[0],laser[1]-30]
+    if is_laser_hit(laser):
+      print("hit")
+
+
+if len(laser_list) > 0 and laser_list[0][1] < 0:
+    laser_list.remove(laser_list[0])
+
+
+
 
 clock = pygame.time.Clock()
 
@@ -37,14 +59,7 @@ GON_SHOT= "sound.mp3"
 pygame.mixer.init()
 pygame.mixer.music.load(SOUND_FILLE)
 pygame.mixer.music.load(GON_SHOT)
-pygame.mixer.Channel(0).play(pygame.mixer.Sound(SOUND_FILLE))
-
-
- 
- 
-
-
-
+pygame.mixer.Channel(0).play(pygame.mixer.Sound(SOUND_FILLE)) 
 
 
 # laser_list = [[121,780],[171,780]]
@@ -83,9 +98,9 @@ while play:
 
 
   screen.blit(ship_image,(ship_x,ship_y))
-  pygame.draw.circle(screen,(255,255,255),(circle_x , circle_y),10)
+  pygame.draw.circle(screen,(255,255,255),(circle_x , circle_y),20)
 
-  textsurface = myfont.render('score', False, (255, 255, 255))
+  textsurface = myfont.render('score:', False, (255, 255, 255))
   print_lasers()
   screen.blit(textsurface,(0,0))
 
