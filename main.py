@@ -7,6 +7,7 @@ WINDOW_H = 700
 WINDOW_SIZE = (WINDOW_W, WINDOW_H)
 laser_list = []
 play = True
+score = 0
 
 
 pygame.init()
