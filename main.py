@@ -30,11 +30,16 @@ def is_laser_hit(laser_pos):
 
 def print_lasers():
   for i in range(len(laser_list)):
+    global score
+    global circle_x
     laser = laser_list[i]
     screen.blit(laser_image,(laser[0],laser[1]))
     laser_list[i] = [laser[0],laser[1]-30]
     if is_laser_hit(laser):
-      print("hit")
+      score += 1
+      circle_x = 0 
+
+
 
 
 if len(laser_list) > 0 and laser_list[0][1] < 0:
